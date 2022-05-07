@@ -20,6 +20,7 @@ async function run(){
     try{
         await client.connect();
  const vegeCollection = client.db("vegeShop").collection("vegetables");
+//  load data
 app.get('/vegetable',async(req,res)=>{
     const query={}
     const cursor=vegeCollection.find(query)
@@ -62,7 +63,7 @@ app.put('/vegetable/:id',async(req,res)=>{
 })
 
 // delete 
-app.delete('vegetable/:id',async(req,res)=>{
+app.delete('/vegetable/:id',async(req,res)=>{
     const id=req.params.id
     const query={_id:ObjectId(id)}
     const result=await vegeCollection.deleteOne(query)
