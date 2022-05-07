@@ -45,16 +45,16 @@ res.send(result)
 
 })
 
-// update deliver
+// update quantity
 app.put('/vegetable/:id',async(req,res)=>{
     const id=req.params.id
-    const updateQuantity=req.body
+    const updateQuantity=Number(req.body)
  console.log(updateQuantity)
     const filter={_id:ObjectId(id)}
     const options = { upsert: true }
     const updateDoc = {
         $set: {
-          quantity:updateQuantity.quantity
+          quantity:updateQuantity
         },
       };
       const result=await vegeCollection.updateOne(filter,updateDoc,options)
