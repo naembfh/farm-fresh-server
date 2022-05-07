@@ -47,18 +47,26 @@ res.send(result)
 // update deliver
 app.put('/vegetable/:id',async(req,res)=>{
     const id=req.params.id
-    const updateQuantity=Number(req.body.quantity)
+    const updateQuantity=req.body
  console.log(updateQuantity)
     const filter={_id:ObjectId(id)}
     const options = { upsert: true }
     const updateDoc = {
         $set: {
-          quantity:updateQuantity
+          quantity:updateQuantity.quantity
         },
       };
       const result=await vegeCollection.updateOne(filter,updateDoc,options)
       res.send(result)
 
+})
+
+// delete 
+app.delete('vegetable/:id',async(req,res)=>{
+    const id=req.params.id
+    const query={_id:ObjectId(id)}
+    const result=await vegeCollection.deleteOne(query)
+    res.send(result)
 })
 
     }
