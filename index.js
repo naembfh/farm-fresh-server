@@ -22,8 +22,10 @@ async function run(){
  const vegeCollection = client.db("vegeShop").collection("vegetables");
 //  load data
 app.get('/vegetable',async(req,res)=>{
-    const query={}
+    const query=req.query
+    console.log(query)
     const cursor=vegeCollection.find(query)
+
     const result=await cursor.toArray()
     res.send(result)
 })
@@ -34,6 +36,15 @@ app.get('/vegetable',async(req,res)=>{
      const result=await vegeCollection.findOne(query)
      res.send(result)
  })
+
+//  app.get('/vegetable',async(req,res)=>{
+//      const q=req.query
+//      console.log(q.email)
+
+//      const cursor=vegeCollection.find(q)
+//     const result=await cursor.toArray()
+//     res.send(result)
+//  })
 
 //  post data
 
