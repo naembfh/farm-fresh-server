@@ -37,16 +37,6 @@ app.get('/vegetable',async(req,res)=>{
      res.send(result)
  })
 
-//  app.get('/vegetable',async(req,res)=>{
-//      const q=req.query
-//      console.log(q.email)
-
-//      const cursor=vegeCollection.find(q)
-//     const result=await cursor.toArray()
-//     res.send(result)
-//  })
-
-//  post data
 
 app.post('/vegetable',async(req,res)=>{
     const newVege=req.body;
