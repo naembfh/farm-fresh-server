@@ -23,7 +23,7 @@ async function run(){
 //  load data
 app.get('/vegetable',async(req,res)=>{
     const query=req.query
-    console.log(query)
+    // console.log(query)
     const cursor=vegeCollection.find(query)
 
     const result=await cursor.toArray()
@@ -59,7 +59,7 @@ res.send(result)
 // update quantity
 app.put('/vegetable/:id',async(req,res)=>{
     const id=req.params.id
-    const updateQuantity=Number(req.body)
+    const updateQuantity=req.body.newquantity
  console.log(updateQuantity)
     const filter={_id:ObjectId(id)}
     const options = { upsert: true }
